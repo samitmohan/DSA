@@ -1,0 +1,120 @@
+// Notes
+-------------------------
+
+unsigned variables -> Can hold any positive numbers
+signed variables -> Can hold both negative and positive values
+iostream -> Class
+cin -> Object
+
+Class -> Map of house.
+House -> Object
+
+-------------------------
+
+Question on Sorting (Merge Sort)
+
+4GB Data -> Unsorted
+Need to sort it in an array of 1 GB data (all of it)
+
+Ans -> Divide 4Gb 4 blocks into 1 GB each (file 1, file 2, file3, file4)
+    Store 1GB data in each of them.
+
+    In the 1GB (where we want to sort) block, divide it the same way into five 200 MB blocks
+    Sort the data and pick the first number in each block and store it in the RAM (smallest number)
+
+
+-----------------------
+Question on Arrays
+
+Product of an array without using itself -> {10,20,30,40} -> create a new array -> 0th index ko chorhke, baaki sabke product -> {24000, 12000, 8000, 6000}
+Complexity -> O(n)
+
+One method: 
+multiply all and then divide by the number
+
+
+------------------------
+Difference between push_back and emplace_back
+which one is fas? depends on the input
+are they same or diff? sometimes
+
+works exactly the same on inbuilt data type, int, float, long -> all same
+BUT
+for user defined data, emplace_back is faster (using classes etc)
+
+
+    // Push_back
+    1) make dummy object somewhere in the memory
+    2) copies the dummy object to the og vector
+    3) remove dummy object
+
+    // emplace_back
+    1) make object directly into the vector (so a bit faster)
+
+// STL
+Sort list in reverse order
+
+bool cmp(int x, int y){
+    return x>y;
+
+}
+
+
+int main(){
+    sort(v.being(), v.end(), cmp);
+
+}
+
+--------------------------
+
+PigeonHole principle
+In any group of 366 people, there must be two people having the same birth- day: Since there are 365 days in a year (ignoring leap years), it is not possible that the birthdays of 366 people are all distinct.
+ 
+Pigeonhole Principle: Let k ≥ 1 be an integer. If k+1 or more objects are placed into k boxes, then there is at least one box containing two or more objects.
+OR
+
+If there are N items and M containers (N > M) then N/M is atleast 2.
+
+
+Equivalently, if A and B are two finite sets with |A| > |B|, then there is no one-to-one function from A to B.
+Question ->  A licence plate number consists of a sequence of four uppercase letters
+followed by three digits. How many licence plate numbers are there?
+
+---------------------------
+Memory Allocation in C++
+
+2 Types -> Static Memory Allocation and Dynamic Memory Allocation
+
+Static/Compile Time -> Exact size and type of storage must be known at compile time. 
+It forms a symbol table at compilation time. 
+int a[100] // 400 bytes
+int x // 4 bytes
+char ch // 1 byte
+
+Stored in RAM. Size/Location -> Fixed. Not flexible.
+
+Dynamic/Running Time -> Memory created during run time. Flexible, exact amount of space or number of items does not have to be known by the computer in advance.
+
+Pointers are crucial for DMA. Allocation / De-allocation is done by 2 commands.
+// C compared to C++
+new and delete (new = malloc / calloc (allocate single/multiple block of memory), delete = free())
+
+Used to clean space being used by variables (De-allocation)
+
+-------------------------
+
+use "\n" rather than endl -> endl flushes the input
+just like in terminal -> clear (clears the screen but you can still scroll up and see, "\n" works the same way)
+where as endl acts like command K which flushes the screen. 
+
+------------------------
+
+To use pointers with vector, use .data()
+vector<int> arr = {1,2,3,4,5};
+int * p = arr;
+cout << arr << endl #wont work
+
+;; 
+
+int * p = arr.data()
+cout << *p << endl;
