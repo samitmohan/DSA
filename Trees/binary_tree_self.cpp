@@ -1,6 +1,9 @@
 #include <iostream>
 using namespace std;
 
+// To find complexity of tree (most of the time O(N)) -> always think about 2 types of Trees.
+// 1) Balanced Tree, 2) Skewed Tree. dry run for both of them to find TC.
+
 // Basic definations -> https://www.interviewbit.com/courses/programming/topics/tree-data-structure/
 // No default header file for tree in C++ but you don't have to create a tree everytime, work only on root node.
 
