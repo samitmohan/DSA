@@ -10,6 +10,9 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+// Postorder = left, right, root
+
 class Solution
 {
 public:
@@ -30,3 +33,6 @@ public:
         return ans;
     }
 };
+
+
+// Postorder using stack -> hard, left.

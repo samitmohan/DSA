@@ -21,6 +21,8 @@ using namespace std;
 // input -> root = [1, null. 2]
 // output -> 2
 
+// ans -> 1 + max(l, r)
+
 int maxDepth(Node *root)
 {
     // if empty tree, height = 0
@@ -28,11 +30,13 @@ int maxDepth(Node *root)
     {
         return 0;
     }
-    // else return maximum of left node / right node + 1 (for including the root node)
-    return max(maxDepth(root->left), maxDepth(root->right)) + 1;
+    int lefthalf = maxDepth(root->left);
+    int righthalf = maxDepth(root->right);
+    return 1 + max(lh, rh);
+
 }
 
-// leetcode solution
+// leetcode solution (same solution just cleaner way to write)
 class Solution
 {
 public:

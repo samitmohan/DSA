@@ -1,38 +1,38 @@
 // https://leetcode.com/problems/swapping-nodes-in-a-linked-list/
 
+// You are given the head of a linked list, and an integer k.
+
+// Return the head of the linked list after swapping the values of the kth node from the beginning and the kth node from the end (the list is 1-indexed).
+
 class Solution
 {
 public:
-    ListNode *swapNodes(ListNode *head, int k)
+    ListNode *swapNodes(ListNode *head, int k) 
     {
-        int listLength = 0;
-        ListNode *temp = head;
-        // from the start
-        ListNode *start = head;
-        while (temp != NULL)
+        // 2 pointer approach (both start at head)
+        ListNode *left = head;
+        ListNode *right = head;
+        ListNode *curr = head;
+        int counter = 1;
+        while (curr != NULL)
         {
-            // count++
-            listLength++;
-            // whenever you reach kth element from start
-            if (listLength == k)
+            if (counter < k)
             {
-                // store value of it
-                start = temp;
+                // keep moving till you reach kth node from beginning
+                left = left->next;
             }
-            // keep iterating
-            temp = temp->next;
+            if (coutner > k)
+            {
+                // keep moving till you reach kth node from end
+                right = right->next;
+            }
+            curr = curr->next;
+            counter++;
         }
-        // from the end
-        // another variable end
-        ListNode *end = head;
-        // till you reach kth element from end
-        for (int i = 1; i <= listLength - k; i++)
-        {
-            // keep iterating
-            end = end->next;
-        }
-        // once you reach, swap values
-        swap(start->val, end->val);
+        // swap
+        int temp = left->val;
+        left->val = right->val;
+        right->val = temp;
         return head;
     }
 };
