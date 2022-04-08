@@ -20,6 +20,7 @@ Find out -> lh + rh (for most cases), (for special cases) left diameter, right d
 
 
 // height function (1 + max(lh,rh))
+
 int height(TreeNode *root) 
 {
     if (root == nullptr) return 0; // base case.
