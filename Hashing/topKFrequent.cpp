@@ -50,6 +50,7 @@ int topKFrequent(vector<int> &arr, int k)
     {
         cout << i << " ";
     }
+    // return ans;
 }
 
 int main()
@@ -61,3 +62,36 @@ int main()
     // output -> [1,2]
     return 0;
 }
+
+// Leetcode Solution
+
+class Solution
+{
+public:
+    // comparator to sort pairs in decreasing order of their second element
+    static bool MYcomparator(pair<int, int> a, pair<int, int> b)
+    {
+        return b.second < a.second;
+    }
+    vector<int> topKFrequent(vector<int> &nums, int k)
+    {
+        int n = nums.size();
+        vector<pair<int, int>> x;
+        map<int, int> mp; // creating a map to store every element and its frequency
+        for (int i = 0; i < n; i++)
+        {
+            mp[nums[i]]++;
+        }
+        for (auto it : mp)
+        {
+            x.push_back(make_pair(it.first, it.second)); // storing every key-value(map pair) in a vector so that it can be sorted
+        }
+        sort(x.begin(), x.end(), MYcomparator); // using our MYcompartor function
+        vector<int> v;
+        for (auto i = x.begin(); i != x.begin() + k; i++)
+        { // iterating over first K elements and storing them in a vector to return
+            v.push_back(i->first);
+        }
+        return v;
+    }
+};
