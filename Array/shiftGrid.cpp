@@ -12,12 +12,12 @@ int shiftGrid(vector<vector<int>> &grid, int k)
     int columns = grid[0].size();
     for (; k > 0; k--)
     {
-        int previous = grid[rows - 1][columns - 1];
+        int previous = grid[rows - 1][columns - 1]; // last element
         for (int i = 0; i < rows; i++)
         {
             for (int j = 0; j < columns; j++)
             {
-                swap(grid[i][j], previous);
+                swap(grid[i][j], previous); // swap first with last
             }
         }
     }
