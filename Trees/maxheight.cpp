@@ -33,7 +33,6 @@ int maxDepth(Node *root)
     int lefthalf = maxDepth(root->left);
     int righthalf = maxDepth(root->right);
     return 1 + max(lh, rh);
-
 }
 
 // leetcode solution (same solution just cleaner way to write)

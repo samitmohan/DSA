@@ -1,5 +1,8 @@
 // Given a binary tree, determine if it is height-balanced.
 
+#include <bits/stdc++.h>
+using namespace std;
+// https://www.youtube.com/watch?v=nHMQ33LZ6oA&list=PLDzeHZWIZsTo87y1ytEAqp7wYlEP3nner&ab_channel=CodeHelp-byBabbar
 // For this problem, a height-balanced binary tree is defined as:
 
 // a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
@@ -19,82 +22,88 @@
 
 // naive solution (figure out left height, right height, find diff, compare with 1)
 
-bool check(node)
+class Solution
 {
-	if node == nullptr;
-		return true; // if empty (height = 0 < 1)
-
-	left_height = find_height_left(node->left);
-	right_height = find_height_right(node->right);
-
-	if (abs(right_height - left_height) > 1)
+private:
+	// height function = pre-req
+	int height(TreeNode *root)
 	{
-		return false;
-	} 
-	else // check for remaining nodes if above is true
-	{
-		bool left = check(node->left);
-		bool right = check(node->right);
+		// if empty tree, height = 0
+		if (root == nullptr)
+		{
+			return 0;
+		}
+		// else return maximum of left node / right node + 1 (for including the root node)
+		return max(height(root->left), height(root->right)) + 1;
 	}
 
-	// if anyone from left right is false -> whole answer is false.
-
-	if (!left || !right) 
+public:
+	bool isBalanced(TreeNode *root)
 	{
-		return false;
-	}
+		if (root == nullptr)
+			return true;
+		// answer from left and right
+		bool left = isBalanced(root->left);
+		bool right = isBalanced(root->right);
+		// difference
+		bool diff = abs(height(root->left) - height(root->right)) <= 1;
 
-	return true; // otherwise
-}
+		// if all true -> answer found!
+		if (left && right && diff)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+};
 
 // TC -> O(N) (traversal) * O(N) (find left/right height) [worst case skew tree] = O(N^2)
 
 // Convert N^2 -> N
 
-// reduce time to find left and right half (line 27, 28) -> O(N) complexity.
-
-// pre-req -> max height question
-// how to find height of tree in O(N)? -> lh = check(node->left) rh = check(node->right), return max(lh, rh) + 1
-
-int check(node)
-{
-	if (node == nullptr)
-	{
-		return 0;
-	}
-	int lh = check(node->left);
-	int rh = check(node->right);
-	return max(lh, rh) + 1;
-}
-
-// Answer
+// Reduce time to find height of both left and right tree, basically do it without using height function
+// Use pair<bool, int> (true false, height) (first = is it balanced?, second = height)
 
 class Solution
 {
 public:
-	bool ans;
-	int check(TreeNode* root)
+	// function to check whether BT is balanced or not without using height function
+	pair<bool, int> isBalancedFast(node *root)
 	{
-		if (root == nullptr) 
+		if (root == nullptr)
 		{
-			return 0;
+			pair<bool, int> p = make_pair(true, 0);
+			return p;
 		}
-		int lh = check(root->left);
-		int rh = check(root->right);
 
-		// check condition for Balanced BT
-		if (abs(lh - rh) > 1) 
+		pair<int, int> left = isBalancedFast(root->left);
+		pair<int, int> right = isBalancedFast(root->right);
+		// find if it's balanced from left and right
+		bool leftAns = left.first;
+		bool rightAns = right.first;
+		// height = .second
+		// difference
+		bool diff = abs(left.second - right.second) <= 1;
+
+		// answer (set height and bool val true false)
+		pair<bool, int> ans;
+		ans.second = max(left.second, right.second) + 1; // height
+		if (leftAns && rightAns && diff)
 		{
-			ans = false;
+			ans.first = true;
 		}
-		// else if true, return height of tree
-		return max(lh, rh) + 1;
+		else
+		{
+			ans.first = false;
+		}
+		return ans; // final answer with true/false and height!
 	}
 
-	bool isBalanced(TreeNode* root)
+	bool isBalanced(node *root)
 	{
-		ans = true; // default
-		int temp = check(root);
-		return ans;
+		return isBalancedFast(root).first; // answer
 	}
 };
