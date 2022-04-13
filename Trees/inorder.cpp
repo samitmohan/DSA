@@ -35,7 +35,7 @@ public:
     }
 };
 
-// Inorder using stack -> O(N) TC, SC 
+// Inorder using stack -> O(N) TC, SC
 
 // 1) keep a stack, push root initially
 // 2) take left, keep moving left.
@@ -58,7 +58,7 @@ public:
                 st.push(node); // push element to stack and move left
                 node = node->left;
             }
-            else 
+            else
             {
                 // if node is null, pop and print
                 // special case if stack empty then exit
@@ -68,9 +68,9 @@ public:
                 }
                 // else if it's null, pop and print
                 node = st.top();
-                st.pop(); // print
+                st.pop();                     // print
                 inorder.push_back(node->val); // pb value in answer
-                node = node->right; // check for right
+                node = node->right;           // check for right
             }
         }
         return inorder;
