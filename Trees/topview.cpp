@@ -15,17 +15,17 @@ public:
 	// Since we need in ascending order, map<int, int> to store node data and line (no duplicates)
 	// queue<pair<data, line> q; for level order traversal.
 
-	void topView(Node *root) 
+	void topView(Node *root)
 	{
 		vector<int> ans;
-		if (root == nullptr)  // base condition
+		if (root == nullptr) // base condition
 		{
 			return ans;
 		}
 		map<int, int> mp;
-		queue<pair<Node*, int>> q;
+		queue<pair<Node *, int>> q;
 		q.push({root, 0}) // initially. (draw diagram and check in notebook)
-		while (!q.empty()) 
+			while (!q.empty())
 		{
 			auto element = q.front();
 			q.pop();
@@ -33,7 +33,7 @@ public:
 			Node *node = element.first;
 			int line = element.second;
 			// mp[line] = node->data (for bottom view) (no need to find line in map)
-			if (mp.find(line) == mp.end()) 
+			if (mp.find(line) == mp.end())
 			{
 				// put in map
 				mp[line] = node->data;

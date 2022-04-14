@@ -1,26 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Complexity of insertion/searching : O(logN) (perfect BST), generally speaking -> O(height)
+// Inorder (L N R) of BST is sorted. (observation)
+// Complxity of deleteion :
+
 class binarySearchTree
 {
 public:
     class Node
     {
     public:
-        int val;
+        int value;
         Node *left;
         Node *right;
         Node(int val)
         {
-            this->val = val;
+            this->value = val;
             left = nullptr;
             right = nullptr;
         }
     };
 
 private:
-    Node *root = nullptr;
-    Node *insert(Node *myNode, int value)
+    Node *root = nullptr; // initially
+    Node *insert(Node *myNode, int value) 
     {
         if (myNode == nullptr)
         {
@@ -28,7 +32,7 @@ private:
             return baseCase;
         }
         // else nodes exist, apply BST rule, root->val < val(curr) = right side.
-        if (myNode->val <= value)
+        if (myNode->value <= value)
         {
             myNode->right = insert(myNode->right, value);
         }
@@ -51,19 +55,19 @@ private:
         // left
         if (myNode->left != nullptr)
         {
-            cout << myNode->left->val << " -> ";
+            cout << myNode->left->value << " -> ";
         }
         else
         {
             cout << " -> ";
         }
         // value
-        cout << myNode->val;
+        cout << myNode->value;
 
         // right
         if (myNode->right != nullptr)
         {
-            cout << " <- " << myNode->right->val;
+            cout << " <- " << myNode->right->value;
         }
         else
         {
@@ -74,25 +78,46 @@ private:
         display(myNode->left);
         display(myNode->right);
     }
+
     // search
-    bool find(int data, Node *myNode)
+    bool find(int target, Node *myNode)
     {
         if (myNode == nullptr)
         {
             return false;
         }
-        if (myNode->val == data)
+        if (myNode->value == target)
         {
             return true;
         }
-        if (myNode->val < data)
+        if (myNode->value < target)
         {
-            return find(data, myNode->right);
+            return find(target, myNode->right);
         }
         else
         {
-            return find(data, myNode->left);
+            return find(target, myNode->left);
         }
+    }
+
+    Node* minVal(Node *myNode)
+    {
+        Node *temp = myNode;
+        while (temp->left != nullptr)
+        {
+            temp = temp->left;
+        }
+        return temp; // min
+    }
+
+    Node *maxVal(Node *myNode)
+    {
+        Node *temp = myNode; // myNode = root
+        while (temp->right != nullptr)
+        {
+            temp = temp->right;
+        }
+        return temp; // max
     }
 
 public:
@@ -104,9 +129,19 @@ public:
     {
         this->root = insert(root, value);
     }
-    bool find(int data)
+    bool find(int target)
     {
-        return find(data, root);
+        return find(target, root);
+    }
+
+    void min()
+    {
+        minVal(root);
+    }
+
+    void max()
+    {
+        maxVal(root);
     }
 };
 
@@ -125,7 +160,6 @@ int main()
     bst1.insert(4);
     bst1.display();
     cout << bst1.find(20) << "\n"; // false
-    cout << bst1.find(4) << "\n"; // true
+    cout << bst1.find(4) << "\n";  // true
     return 0;
 }
-using namespace std;

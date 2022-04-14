@@ -34,7 +34,7 @@ public:
     }
 };
 
-// Preorder using stack -> O(N) TC, SC 
+// Preorder using stack -> O(N) TC, SC
 
 // 1) keep a stack, push root initially
 // 2) pop root and print the value
@@ -52,12 +52,12 @@ public:
         }
         stack<TreeNode *> st;
         st.push(root); // 1)
-        while(!st.empty())
+        while (!st.empty())
         {
-            root = st.top(); // top element of stack -> curr root
-            st.pop(); // 2)
+            root = st.top();               // top element of stack -> curr root
+            st.pop();                      // 2)
             preorder.push_back(root->val); // preorder vector = ans vector, pb all values in it after pop
-            if (root->right != nullptr) // 3)
+            if (root->right != nullptr)    // 3)
             {
                 st.push(root->right);
             }

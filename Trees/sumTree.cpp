@@ -62,7 +62,7 @@ public:
         if (left && right && condition)
         {
             // it is a sum tree.
-            ans.first = true;                                     // main answer
+            ans.first = true;                                           // main answer
             ans.second = root->data + leftAns.second + rightAns.second; // total sum
         }
         else

@@ -24,12 +24,12 @@ using namespace std;
 // min(1, 0) = 1 (wrong answer)
 // It will only work for perfect binary tree (if all levels are filled with 2 children)
 
-class Solution {
+class Solution
+{
 public:
-    
-    int fun(TreeNode* root)
+    int fun(TreeNode *root)
     {
-        if (root == nullptr) 
+        if (root == nullptr)
         {
             return INT_MAX; // infinite
         }
@@ -41,15 +41,14 @@ public:
         }
         return min(fun(root->left), fun(root->right)) + 1;
     }
-    
-    int minDepth(TreeNode* root) {
+
+    int minDepth(TreeNode *root)
+    {
         // if empty tree, height = 0
-        if (root == nullptr) 
+        if (root == nullptr)
         {
             return 0;
         }
         return fun(root); // answer
-        
     }
 };
-

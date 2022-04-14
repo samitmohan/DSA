@@ -3,11 +3,11 @@ using namespace std;
 
 // Problem link -> https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/
 
-//using inorder traversal code
+// using inorder traversal code
 
 // solution : https://www.youtube.com/watch?v=q_a6lpbKJdw&list=PLgUwDviBIf0q8Hkd7bK2Bpryj2xVJk8Vk&index=23&ab_channel=takeUforward
 
-void inorder(TreeNode *root, int x, int level, map<int, map<int, multiset<int>>> &nodes) 
+void inorder(TreeNode *root, int x, int level, map<int, map<int, multiset<int>>> &nodes)
 {
     // base case
     if (root == nullptr)
@@ -33,7 +33,7 @@ vector<vector<int>> verticalTraversal(TreeNode *root)
     // answer
     vector<vector<int>> ans;
     // traverse across the map
-    // what is p -> int = p.first, map<int, multiset<int>> = p.second 
+    // what is p -> int = p.first, map<int, multiset<int>> = p.second
     for (auto p : nodes)
     {
         vector<int> col;

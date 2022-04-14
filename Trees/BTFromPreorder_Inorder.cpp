@@ -52,30 +52,31 @@ Find root element's position in inorder
     root->right (position of index + 1 to end) [posn + 1 -> inorderEnd]
 */
 
-class Solution {
+class Solution
+{
 public:
     int index = 0; // index of preorder
-    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) 
+    TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder)
     {
         return createTree(preorder, inorder, 0, inorder.size() - 1);
     }
 
     // pass map also for optimised
-    TreeNode *createTree(vector<int> &preorder, vector<int> &inorder, int start, int end) 
+    TreeNode *createTree(vector<int> &preorder, vector<int> &inorder, int start, int end)
     {
         // start = inorderStart, end = inOrderEnd
-        if (start > end) 
+        if (start > end)
         {
             return nullptr; // corner case / base case
         }
         // root element
-        int element = preorder[index++]; // after finding element, index++ for next
+        int element = preorder[index++];        // after finding element, index++ for next
         TreeNode *node = new TreeNode(element); // create node of that element
         int position;
         // finding the element in inorder (takes O(N) time, can do better if we use a map here)
-        for (int i = start; i <= end; i++) 
+        for (int i = start; i <= end; i++)
         {
-            if (inorder[i] == node->val) 
+            if (inorder[i] == node->val)
             {
                 // found
                 position = i;
@@ -90,12 +91,11 @@ public:
     }
 };
 
-
 // Map O(1) instead of finding element iteratively O(N)
 /*
-    int createMapping(vector<int> &inorder, map<int, int> nodeToIndex, int n) 
+    int createMapping(vector<int> &inorder, map<int, int> nodeToIndex, int n)
     {
-        for (int i = 0; i < n; i++) 
+        for (int i = 0; i < n; i++)
         {
             nodeToIndex[inorder[i]] = i;
         }
@@ -104,4 +104,3 @@ public:
     // map<int, int> nodeToIndex;
     // createMapping(inorder, nodeToIndex, n);
 */
-

@@ -18,19 +18,20 @@ using namespace std;
 Find out -> lh + rh (for most cases), (for special cases) left diameter, right diameter. Answer -> max of three.
 */
 
-
 // height function (1 + max(lh,rh))
 
-int height(TreeNode *root) 
+int height(TreeNode *root)
 {
-    if (root == nullptr) return 0; // base case.
+    if (root == nullptr)
+        return 0;                                            // base case.
     return 1 + max(height(root->left), height(root->right)); // standard formula
 }
 
-int diameterOfBinaryTree(TreeNode* root)
+int diameterOfBinaryTree(TreeNode *root)
 {
     // base case
-    if (root == nullptr) return 0; // no node, dist = 0
+    if (root == nullptr)
+        return 0; // no node, dist = 0
     // option 1 -> height of left + height of right
 
     // standard case
@@ -46,7 +47,7 @@ int diameterOfBinaryTree(TreeNode* root)
     return max(option1, max(option2, option3));
 }
 
-// return 1 + max(height(root->left), height(root->right)); 
+// return 1 + max(height(root->left), height(root->right));
 // Complexity of height -> O(N)
 
 // Complexity of diameter (2 recursive call) height(root->left) + height(root->right)

@@ -5,7 +5,7 @@
 // root->left and root->right
 // preorder traversal -> root left right
 // opp -> root right left
-/* 
+/*
 
 logic : for left sub tree -> run preorder traversal (root left right)
         for right sub tree -> run reverse preorder  (root right left)
@@ -15,13 +15,13 @@ logic : for left sub tree -> run preorder traversal (root left right)
 class Solution
 {
 public:
-    bool isSymmetric(TreeNode* root)
+    bool isSymmetric(TreeNode *root)
     {
-        // if tree null return false OR return the answer 
+        // if tree null return false OR return the answer
         return root == nullptr || isSymmetricHelp(root->left, root->right);
     }
     // writing isSymmetricHelp
-    bool isSymmetricHelp(TreeNode* left, TreeNode* right)
+    bool isSymmetricHelp(TreeNode *left, TreeNode *right)
     {
         // if either left / right are null, return t/f by checking left == right
         // if one guy is null, other should also by null for symmetric.
@@ -30,8 +30,9 @@ public:
             return left == right; // true / false
         }
         // check node's value, if not equal not symmetric
-        if (left->val != right->val) return false; // not symm
-        
+        if (left->val != right->val)
+            return false; // not symm
+
         // preorder and reverse preorder simultaneously.
         // going left and right + left and right simultaneously
         // if both TRUE then only true.
@@ -40,4 +41,4 @@ public:
 };
 
 // TC -> O(N)
-// SC -> O(N) skew 
+// SC -> O(N) skew
