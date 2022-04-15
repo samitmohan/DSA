@@ -6,5 +6,6 @@
         "string_view": "cpp",
         "vector": "cpp",
         "ranges": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

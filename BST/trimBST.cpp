@@ -18,22 +18,24 @@ else if the root value < L
       we need return trimmed right subtree.
 else
       similarly we need return trimmed left subtree.
-      
+
 */
 
-class Solution {
+class Solution
+{
 public:
-    TreeNode* trimBST(TreeNode* root, int low, int high) 
+    TreeNode *trimBST(TreeNode *root, int low, int high)
     {
         // base case
-        if (root == nullptr) return nullptr;
+        if (root == nullptr)
+            return nullptr;
 
-        if (root->val < low) 
+        if (root->val < low)
         {
             // ans must be in right half
             return trimBST(root->right, low, high);
         }
-        if (root->val > high) 
+        if (root->val > high)
         {
             // ans must be in left half
             return trimBST(root->left, low, high);

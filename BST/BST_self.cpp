@@ -24,7 +24,7 @@ public:
 
 private:
     Node *root = nullptr; // initially
-    Node *insert(Node *myNode, int value) 
+    Node *insert(Node *myNode, int value)
     {
         if (myNode == nullptr)
         {
@@ -100,7 +100,7 @@ private:
         }
     }
 
-    Node* minVal(Node *myNode)
+    Node *minVal(Node *myNode)
     {
         Node *temp = myNode;
         while (temp->left != nullptr)
