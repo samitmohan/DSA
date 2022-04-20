@@ -1,6 +1,8 @@
 // Notes
 -------------------------
 
+How to solve problems -> https://www.youtube.com/watch?v=vEq6vmKIJwo&ab_channel=GauravSen
+
 unsigned variables -> Can hold any positive numbers
 signed variables -> Can hold both negative and positive values
 iostream -> Class

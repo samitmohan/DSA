@@ -50,6 +50,19 @@ int bubbleSort(vector<int> &arr)
 // Stable -> Yes.
 // Shifts not swaps & real life example -> students in assembly line (height wise)
 
+/*
+12, 11, 13, 5, 6
+Let us loop for i = 1 (second element of the array) to 4 (last element of the array)
+i = 1. Since 11 is smaller than 12, move 12 and insert 11 before 12 
+11, 12, 13, 5, 6
+i = 2. 13 will remain at its position as all elements in A[0..I-1] are smaller than 13 
+11, 12, 13, 5, 6
+i = 3. 5 will move to the beginning and all other elements from 11 to 13 will move one position ahead of their current position. 
+5, 11, 12, 13, 6
+i = 4. 6 will move to position after 5, and elements from 11 to 13 will move one position ahead of their current position. 
+5, 6, 11, 12, 13 
+*/
+
 int insertionSort(vector<int> &arr)
 {
     // could also do for i = 1, i < arr.size(), same thing -> Assume first number -> To be sorted already
@@ -121,7 +134,7 @@ int selectionSort(vector<int> &arr)
 // Cyclic Sort -> O(N) complexity (worst and best case)
 
 // IMPORTANT NOTE = When given numbers from range 1 to N -> Use Cyclic Sort.
-// Should be in continuos order in range (1-N);
+// Should be in continous order in range (1-N);
 // Applying one check to the first number and swapping it.
 // Before Sorting (Worst Case example)
 
@@ -264,6 +277,22 @@ void mergesort(int arr[], int start, int end)
     }
 }
 
+// Quick Sort -> O(N^2)
+/*
+
+arr[] = {10, 80, 30, 90, 40, 50, 70}
+Indexes:  0   1   2   3   4   5   6 
+
+low = 0, high =  6, pivot = arr[h] = 70
+Initialize index of smaller element, i = -1
+
+arr[] = {10, 80, 30, 90, 40, 50, 70}
+arr[] = {10, 30, 80, 90, 40, 50, 70}
+arr[] = {10, 30, 40, 90, 80, 50, 70} 
+arr[] = {10, 30, 40, 50, 80, 90, 70} 
+arr[] = {10, 30, 40, 50, 70, 90, 80} // final
+*/
+
 int partition(vector<int> &arr, int low, int high)
 {
     // pick a pivot point (RIGHTMOST)
@@ -300,6 +329,100 @@ void quick_sort(vector<int> &arr, int low, int high)
         quick_sort(arr, mid + 1, high);
     }
 }
+
+// Heap Sort -> O(nlogn), space = O(1)
+
+// heapify -> converting node to heap and placing it in the right diretion
+// shifts in logN
+// TIME COMPLEXITY OF BUILDING A HEAP -> O(N) *Important*
+
+/*
+        30(0)                 
+       /   \         
+    70(1)   50(2)
+
+Child (70(1)) is greater than the parent (30(0))
+
+Swap Child (70(1)) with the parent (30(0))
+        70(0)                 
+       /   \         
+    30(1)   50(2)
+*/
+
+void heapify(int arr[], int n, int i)
+{
+    int largest = i; // in case of max heap
+    int left = 2 * i;
+    int right = 2 * i + 1;
+    // check if left index is in bound
+    // compare with largest element
+    if (left <= n && arr[largest] < arr[left]) // why <= ? 1 based indexing.
+    {
+        largest = left; // update largest
+    }
+    // similiarily for right
+    if (right <= n && arr[largest] < arr[right])
+    {
+        largest = right; // update right
+    }
+
+    // check if largest has been updated or not, if updated then it != i
+    if (largest != i)
+    {
+        // updated, swap(arr[largest], arr[i]) (node reached it's correct position)
+        swap(arr[largest], arr[i]);
+        // check for remaining
+        heapify(arr, n, largest);
+    }
+}
+
+// Heap sort wrt max heap (NlogN) (build heap (convert array to heap (O(N)) + call heap sort (logN))
+//  step 1 : swap arr[1] (root) with arr[last] (so that biggest number is at end of array now.)
+//  step 2 : only care about n-1 elements now since last element (greatest) is now sorted (so size--)
+//  step 3 : bring root node to correct position (since you swapped it before) -> how? heapify.
+//  repeat these steps until size = 1 (sorted)
+
+/*
+Input data: 4, 10, 3, 5, 1
+        /   \
+     10(1)   3(2)
+    /   \
+ 5(3)    1(4)
+
+The numbers in bracket represent the indices in the array 
+representation of data.
+
+Applying heapify procedure to index 1:
+         4(0)
+        /   \
+    10(1)    3(2)
+    /   \
+5(3)    1(4)
+
+Applying heapify procedure to index 0:
+        10(0)
+        /  \
+     5(1)  3(2)
+    /   \
+ 4(3)    1(4)
+The heapify procedure calls itself recursively to build heap
+ in top down manner.
+*/
+
+void heapSort(int arr[], int n)
+{
+    int size = n;
+    while (size > 1)
+    {
+        // step 1
+        swap(arr[size], arr[1]);
+        // step 2
+        size--;
+        // step 3
+        heapify(arr, size, 1);
+    }
+}
+
 
 // Radix Sort
 

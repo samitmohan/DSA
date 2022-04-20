@@ -7,9 +7,6 @@ using namespace std;
 
 // https://www.cs.usfca.edu/~galles/visualization/Heap.html
 
-#include <bits/stdc++.h>
-using namespace std;
-
 // max heap (1 based index)
 // left = 2i, right = 2i+1
 // for 0 based index -> parent = (i + 1) /2

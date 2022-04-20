@@ -1,6 +1,7 @@
 #include <iostream>
 #include <queue>
 using namespace std;
+
 void binaryRepresentation(int num)
 {
     if (num == 0)
@@ -34,6 +35,7 @@ void binaryRepresentation(int num)
         que.pop();
     }
 }
+
 int main()
 {
     binaryRepresentation(10);
