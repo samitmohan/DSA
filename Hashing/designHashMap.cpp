@@ -46,9 +46,9 @@ public:
     }
 };
 o
-// Another hack way
+    // Another hack way
 
-class MyHashSet
+    class MyHashSet
 {
     // store details of key k in kth index of array
     vector<bool> ans;
