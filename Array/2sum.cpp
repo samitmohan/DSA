@@ -57,6 +57,11 @@ int twoSum_bs(vector<int> &arr, int target)
 // What if we need a more better solution -> Using STL -> Pairs.
 // Data Structure -> Hash Table (Unordered Set) O(1) Time. -> Overall O(N)
 
+vector<int> twosum_better(vector<int> &arr, int target) {
+    unordered_set<int> s;
+    vector<int> result;
+}
+
 vector<int> twoSum_better(vector<int> &arr, int target)
 {
     // Logic
