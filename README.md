@@ -11,7 +11,6 @@
 - [Runtime Analysis](#runtime-analysis)
 - [Video Lectures](#video-lectures)
 - [Interview Books](#interview-books)
-- [Directory Tree](#directory-tree)
 
 ## Online Judges
 * [LeetCode](https://leetcode.com/)
