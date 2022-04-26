@@ -10,7 +10,7 @@ class Node
 public:
     int value;
     Node *next;
-    Note (int value)
+    Node (int value)
     {
         this->value = value;
         this->next = nullptr;
