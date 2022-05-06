@@ -1,10 +1,7 @@
-#include <iostream>
-#include <vector>
-#include <stack>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
+
+// Array question (can be done using stacks also)
 
 // https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
 
@@ -23,31 +20,43 @@ typedef long long ll;
 
 // https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/discuss/1161129/Multiple-Approach-Explained-w-Easy-Commented-Solutions-or-Beats-100
 
-string removeDuplicates(string& s, int k) 
+// vector.back() = gives the last element (1, 2, 3) = 3
+
+void removeDuplicates(string s, int k) 
 {
-	stack<pair<char, int> >stk; // It will store a character and its consecutive count
-	stk.push({'#', 0}); // just to reduce extra condition checks.
-	for (int i = 0; i < size(s); i++)
+	vector<pair<int, char>> stack = {{0, '#'}}; // avoid empty stack
+	for (char c : s) 
 	{
-		// if current character is equal to previous character, store it with incremented consecutive count
-		stk.push({s[i], stk.top().first == s[i] ? stk.top().second + 1  : 1});
-		// if consecutive count equals k, then delete that group of k characters.
-		if (stk.top().second == k) 
+		if (stack.back().second != c) 
 		{
-			while (stk.top().first == s[i]) 
-				stk.pop();
-			s.erase(i - k + 1, k);                
-			i -= k;
-		}                
+			// if next character c is not the same as last one, push (char, 1) into the stack
+			stack.push_back({1, c});
+		}
+		else if (++stack.back().first == k)
+		{
+			// .first = count of occurence of a character
+			stack.pop_back(); // increment stack.back and count is same as 
+		}
 	}
-	return s;
+
+	string res;
+	for (auto &x : stack) 
+	{
+		res.append(x.first, x.second);
+	}
+
+	// printing res
+	for (auto i : res) 
+	{
+		cout << i << "\n";
+	}
 }
 
-int main()
+int main() 
 {
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    cout << removeDuplicates("deedbbcccbdaa", 3);
-
-    return 0;
+	removeDuplicates("abcd", 2); // abcd
+	cout << endl;
+	removeDuplicates("deeedbbcccbdaa", 3); // aa
+	return 0;
 }
+
