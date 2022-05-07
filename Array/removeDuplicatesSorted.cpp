@@ -21,7 +21,7 @@ int removeDuplicates(vector<int> &arr)
 	int count = 0;
 	for (auto x : s)
 	{
-		count+=1;
+		count += 1;
 	}
 
 	// should return 5
