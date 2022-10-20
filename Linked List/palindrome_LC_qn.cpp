@@ -60,3 +60,13 @@ public:
         return true;
     }
 };
+
+class Solution {
+public:
+    Node *reverse(Node *head) 
+    Node *prevs = nullptr;
+    Node *next = head;
+
+
+
+}

@@ -47,6 +47,13 @@ int ceiling(vector<int> &arr)
     return arr[low];
 }
 
+int ceiligng(vector<int>< &arr) {
+    int target = 15
+    if (target > arr(arr.size() - 1)) {
+
+    }
+}
+
 // For floor -> just return arr[high] and if target is the smallest number -> No ceiling
 
 // https://leetcode.com/problems/find-smallest-letter-greater-than-target/
