@@ -22,6 +22,19 @@ int linear_search(vector<int> &arr)
     return -1;
 }
 
+sort(list)
+low = 0, high = len(list)
+while low <= high:
+  mid = (low + high) / 2 
+  if list[mid] == key: 
+    return True
+  elif list[mid] < key:
+    low = mid + 1
+  else:
+    high = mid - 1
+return False // not found
+
+
 int binarySearch(vector<int> &arr)
 {
     sort(arr.begin(), arr.end());
