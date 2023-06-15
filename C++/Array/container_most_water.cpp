@@ -22,6 +22,7 @@ high-- (shift high to left)
 
 */
 
+
 int maxArea(vector<int> &arr)
 {
     int low = 0;
